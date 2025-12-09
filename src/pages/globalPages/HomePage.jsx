@@ -23,15 +23,6 @@ export default function HomePage() {
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-blue-100'>
-      {/* Header */}
-      <header className='bg-white/70 backdrop-blur-md border-b border-white/30 sticky top-0 z-50 shadow-sm'>
-        <div className='container mx-auto px-4 py-4'>
-          <h1 className='text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent'>
-            Manga Web
-          </h1>
-        </div>
-      </header>
-
       {/* Main content */}
       <main className='container mx-auto px-4 py-10'>
         <div className='text-center mb-12'>

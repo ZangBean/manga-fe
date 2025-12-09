@@ -3,7 +3,7 @@ export default function MangaCard({ manga }) {
     <div className='group cursor-pointer bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-indigo-300'>
       <div className='relative overflow-hidden'>
         <img
-          src={manga.coverImage}
+          src={manga.coverImageUrl}
           alt={manga.title}
           className='w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110'
         />
