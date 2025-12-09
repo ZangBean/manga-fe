@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { Provider } from 'react-redux'
+import './App.css'
 
 import queryClient from '@/configs/queryClient/queryClient'
 import { store } from '@/stores/store'
@@ -20,4 +21,3 @@ function App() {
 }
 
 export default React.memo(App)
-
