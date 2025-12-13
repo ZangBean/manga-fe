@@ -1,14 +1,13 @@
 import { Routes } from 'react-router-dom'
 import { Suspense } from 'react'
 
-import GlobalRoutes from '@/routes/configs/_global'
-
+import AppRoutes from '@/routes'
 import LoadingGrid from '@/components/common/LoadingGrid'
 
 const RootRouter = () => {
   return (
     <Suspense fallback={<LoadingGrid />}>
-      <Routes>{GlobalRoutes}</Routes>
+      <Routes>{AppRoutes}</Routes>
     </Suspense>
   )
 }
