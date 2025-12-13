@@ -6,7 +6,7 @@ import './App.css'
 
 import queryClient from '@/configs/queryClient/queryClient'
 import { store } from '@/stores/store'
-import RootRouter from '@/routes/Root'
+import RootRouter from '@/routes/RootRoutes'
 
 function App() {
   return (
