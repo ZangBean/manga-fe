@@ -1,25 +1,37 @@
+import { FaEye, FaCommentDots } from 'react-icons/fa'
+
 export default function MangaCard({ manga }) {
   return (
-    <div className='group cursor-pointer bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-indigo-300'>
-      <div className='relative overflow-hidden'>
+    <div className='group'>
+      <div className='relative rounded-xl overflow-hidden'>
         <img
           src={manga.coverImageUrl}
           alt={manga.title}
-          className='w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110'
+          className='w-full aspect-[3/4] object-cover'
         />
-        <div className='absolute top-2 right-2 bg-indigo-600 text-white text-xs font-semibold px-2 py-1 rounded-full shadow-sm'>
-          NEW
-        </div>
+
+        <span className='absolute top-2 left-2 bg-indigo-600 text-white text-xs px-2 py-0.5 rounded'>
+          {manga.currentChapter ?? '??'} / {manga.totalChapter ?? '??'}
+        </span>
+
+        <span className='absolute bottom-2 left-2 bg-black/60 text-white text-[11px] px-2 py-0.5 rounded'>
+          {manga.updatedAt ?? 'Vừa xong'}
+        </span>
+
+        <span className='absolute top-2 right-2 bg-black/60 text-white text-[11px] px-2 py-0.5 rounded flex items-center gap-1'>
+          <FaCommentDots className='text-[10px]' />
+          {manga.comments ?? 0}
+        </span>
+
+        <span className='absolute bottom-2 right-2 bg-black/60 text-white text-[11px] px-2 py-0.5 rounded flex items-center gap-1'>
+          <FaEye className='text-[10px]' />
+          {manga.views ?? 0}
+        </span>
       </div>
 
-      <div className='p-4'>
-        <h3 className='font-semibold text-gray-800 text-sm line-clamp-2 mb-3 group-hover:text-indigo-600 transition-colors'>
-          {manga.title}
-        </h3>
-        <button className='w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-2 rounded-xl text-sm font-medium hover:from-indigo-600 hover:to-purple-600 transition-transform duration-200 hover:scale-[1.03]'>
-          Đọc Ngay
-        </button>
-      </div>
+      <h5 className='mt-2 text-sm font-medium text-white line-clamp-2 hover:text-indigo-400 transition'>
+        {manga.title}
+      </h5>
     </div>
   )
 }
