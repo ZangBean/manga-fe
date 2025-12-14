@@ -8,7 +8,7 @@ export const fetchMangaList = createAsyncThunk(
       const response = await fetchMangas()
       return response.data
     } catch (error) {
-      return error
+      throw error
     }
   }
 )
