@@ -8,6 +8,7 @@ import {
 
 import MangaSlider from '@/components/manga/MangaSlider'
 import MangaList from '@/components/manga/MangaList'
+import MangaRandom from '@/components/manga/MangaRandom'
 import LoadingGrid from '@/components/common/LoadingGrid'
 import ErrorPage from '@/pages/errors/ErrorPage'
 
@@ -60,9 +61,9 @@ export default function HomePage() {
             <h2 className='text-xl font-semibold text-white mb-4'>
               Truyện ngẫu nhiên
             </h2>
-            <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4'>
-              {/* Component MangaCard random sẽ render ở đây */}
-            </div>
+            {/* <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4'> */}
+            <MangaRandom mangaList={mangaList} />
+            {/* </div> */}
           </section>
         </div>
 
