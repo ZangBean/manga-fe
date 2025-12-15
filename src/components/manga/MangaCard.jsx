@@ -1,5 +1,24 @@
 import { FaEye, FaCommentDots } from 'react-icons/fa'
 
+const timeAgo = (date) => {
+  if (!date) return 'Vừa xong'
+  const diff = Math.floor((Date.now() - new Date(date)) / 1000)
+
+  if (diff < 60) return 'Vừa xong'
+  const m = Math.floor(diff / 60)
+  if (m < 60) return `${m} phút trước`
+  const h = Math.floor(m / 60)
+  if (h < 24) return `${h} giờ trước`
+  const d = Math.floor(h / 24)
+  if (d < 7) return `${d} ngày trước`
+  const w = Math.floor(d / 7)
+  if (w < 4) return `${w} tuần trước`
+  const mo = Math.floor(d / 30)
+  if (mo < 12) return `${mo} tháng trước`
+  const y = Math.floor(d / 365)
+  return `${y} năm trước`
+}
+
 export default function MangaCard({ manga }) {
   return (
     <div className='group'>
@@ -15,7 +34,7 @@ export default function MangaCard({ manga }) {
         </span>
 
         <span className='absolute bottom-2 left-2 bg-black/60 text-white text-[11px] px-2 py-0.5 rounded'>
-          {manga.updatedAt ?? 'Vừa xong'}
+          {timeAgo(manga.updatedAt)}
         </span>
 
         <span className='absolute top-2 right-2 bg-black/60 text-white text-[11px] px-2 py-0.5 rounded flex items-center gap-1'>
@@ -25,7 +44,7 @@ export default function MangaCard({ manga }) {
 
         <span className='absolute bottom-2 right-2 bg-black/60 text-white text-[11px] px-2 py-0.5 rounded flex items-center gap-1'>
           <FaEye className='text-[10px]' />
-          {manga.views ?? 0}
+          {manga.viewCount ?? 0}
         </span>
       </div>
 

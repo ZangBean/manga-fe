@@ -64,34 +64,39 @@ export default function MangaRandom({ mangaList }) {
   }
 
   return (
-    <div className='flex flex-col items-center space-y-4'>
-      <div className='flex gap-6 overflow-hidden h-[200px]'>
-        {slotRefs.map((ref, idx) => {
-          const slotManga = shuffledSlots[idx] || []
-          return (
-            <div key={idx} className='overflow-hidden'>
-              <ul ref={ref} className='flex flex-col'>
-                {slotManga.map((manga, i) => (
-                  <li key={i} className='h-[200px]'>
-                    {manga && <MangaCard manga={manga} />}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
-        })}
+    <section>
+      <h2 className='text-xl font-semibold text-white mb-4'>
+        Truyện ngẫu nhiên
+      </h2>
+      <div className='flex flex-col items-center space-y-4'>
+        <div className='flex gap-6 overflow-hidden h-[200px]'>
+          {slotRefs.map((ref, idx) => {
+            const slotManga = shuffledSlots[idx] || []
+            return (
+              <div key={idx} className='overflow-hidden'>
+                <ul ref={ref} className='flex flex-col'>
+                  {slotManga.map((manga, i) => (
+                    <li key={i} className='h-[200px]'>
+                      {manga && <MangaCard manga={manga} />}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          })}
+        </div>
+        <button
+          onClick={spin}
+          disabled={spinning || mangaList.length < 5}
+          className={`bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors ${
+            spinning || mangaList.length < 5
+              ? 'opacity-50 cursor-not-allowed'
+              : ''
+          }`}
+        >
+          Quay truyện
+        </button>
       </div>
-      <button
-        onClick={spin}
-        disabled={spinning || mangaList.length < 5}
-        className={`bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors ${
-          spinning || mangaList.length < 5
-            ? 'opacity-50 cursor-not-allowed'
-            : ''
-        }`}
-      >
-        Quay truyện
-      </button>
-    </div>
+    </section>
   )
 }
