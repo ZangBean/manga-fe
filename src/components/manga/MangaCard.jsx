@@ -26,6 +26,8 @@ export default function MangaCard({ manga }) {
         <img
           src={manga.coverImageUrl}
           alt={manga.title}
+          loading='lazy'
+          decoding='async'
           className='w-full aspect-[3/4] object-cover'
         />
 
