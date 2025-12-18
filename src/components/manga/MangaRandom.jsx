@@ -69,14 +69,14 @@ export default function MangaRandom({ mangaList }) {
         Truyện ngẫu nhiên
       </h2>
       <div className='flex flex-col items-center space-y-4'>
-        <div className='flex gap-6 overflow-hidden h-[200px]'>
+        <div className='flex gap-6 overflow-hidden h-50'>
           {slotRefs.map((ref, idx) => {
             const slotManga = shuffledSlots[idx] || []
             return (
               <div key={idx} className='overflow-hidden'>
                 <ul ref={ref} className='flex flex-col'>
                   {slotManga.map((manga, i) => (
-                    <li key={i} className='h-[200px]'>
+                    <li key={i} className='h-50'>
                       {manga && <MangaCard manga={manga} />}
                     </li>
                   ))}

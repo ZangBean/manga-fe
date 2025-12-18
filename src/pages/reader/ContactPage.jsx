@@ -3,7 +3,7 @@ export default function ContactPage() {
     <>
       <div className='min-h-screen relative overflow-hidden'>
         {/* Nền gradient đêm vũ trụ */}
-        <div className='absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-pink-900' />
+        <div className='absolute inset-0 bg-linear-to-br from-purple-900 via-blue-900 to-pink-900' />
 
         {/* Overlay nhẹ để sao nổi bật hơn */}
         <div className='absolute inset-0 bg-black/20' />
@@ -101,7 +101,7 @@ export default function ContactPage() {
                 </div>
                 <button
                   type='submit'
-                  className='cursor-pointer w-full py-4 rounded-xl bg-gradient-to-r from-pink-500 to-cyan-500 text-white font-bold text-xl shadow-lg hover:shadow-cyan-500/50 transform hover:scale-105 transition duration-300'
+                  className='cursor-pointer w-full py-4 rounded-xl bg-linear-to-r from-pink-500 to-cyan-500 text-white font-bold text-xl shadow-lg hover:shadow-cyan-500/50 transform hover:scale-105 transition duration-300'
                 >
                   GỬI ĐI NÀO! 🚀
                 </button>

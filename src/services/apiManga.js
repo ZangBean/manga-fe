@@ -5,4 +5,5 @@ const api = axios.create({
   withCredentials: true,
 })
 
-export const fetchMangas = () => api.get('/mangas')
+export const getAllMangas = () => api.get('/mangas')
+export const getMangaById = (id) => api.get(`/mangas/${id}`)
