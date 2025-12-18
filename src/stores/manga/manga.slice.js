@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchMangaList, fetchMangaById } from './manga.thunk'
+import { fetchMangaList, fetchMangaById, fetchTopMangas } from './manga.thunk'
 
 const initialState = {
   list: [],
   selected: null,
-  status: 'idle', // cho fetch list
-  selectedStatus: 'idle', // cho fetch by id
+  topMangas: [],
+  topStatus: 'idle',
+  status: 'idle',
+  selectedStatus: 'idle',
   error: null,
 }
 
@@ -36,6 +38,18 @@ const mangaSlice = createSlice({
     }
 
     builder
+      // Fetch top mangas
+      .addCase(fetchTopMangas.pending, (state) => {
+        handlePending(state, 'topStatus')
+      })
+      .addCase(fetchTopMangas.fulfilled, (state, action) => {
+        state.topStatus = 'succeeded'
+        state.topMangas = action.payload
+      })
+      .addCase(fetchTopMangas.rejected, (state, action) => {
+        handleRejected(state, action, 'topStatus')
+      })
+
       // Fetch list
       .addCase(fetchMangaList.pending, (state) =>
         handlePending(state, 'status')
