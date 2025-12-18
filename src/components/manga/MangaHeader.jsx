@@ -7,6 +7,11 @@ export default function MangaHeader({
   firstChapter,
   mangaId,
 }) {
+  const readFirstLink = `/truyen-tranh/${manga._id}/chapter-${
+    firstChapter?.number || 1
+  }`
+  const readLatestLink = `/truyen-tranh/${manga._id}/chapter-${latestChapter?.number}`
+
   return (
     <div className='grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16'>
       {/* Cover */}
@@ -105,13 +110,13 @@ export default function MangaHeader({
             <FaHeart /> Theo dõi
           </button>
           <Link
-            to={`/read/${mangaId}/chapter/${firstChapter?.number}`}
+            to={readFirstLink}
             className='bg-gray-700 hover:bg-gray-600 text-white font-bold uppercase tracking-wider px-6 py-4 rounded-lg flex items-center gap-3 transition transform hover:scale-105'
           >
             <FaPlay /> Đọc từ đầu
           </Link>
           <Link
-            to={`/read/${mangaId}/chapter/${latestChapter?.number}`}
+            to={readLatestLink}
             className='bg-pink-600 hover:bg-pink-700 text-white font-bold uppercase tracking-wider px-6 py-4 rounded-lg flex items-center gap-3 transition transform hover:scale-105'
           >
             <FaPlay /> Đọc chap mới nhất
