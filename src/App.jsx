@@ -7,16 +7,18 @@ import './App.css'
 import queryClient from '@/configs/queryClient/queryClient'
 import { store } from '@/stores/store'
 import RootRouter from '@/routes/RootRoutes'
+import ScrollToTop from '@/components/common/ScrollToTop'
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
         <BrowserRouter>
+          <ScrollToTop />
           <RootRouter />
         </BrowserRouter>
-      </Provider>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </Provider>
   )
 }
 

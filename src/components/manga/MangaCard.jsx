@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { FaEye, FaCommentDots } from 'react-icons/fa'
 
 const timeAgo = (date) => {
@@ -21,14 +22,14 @@ const timeAgo = (date) => {
 
 export default function MangaCard({ manga }) {
   return (
-    <div className='group'>
+    <Link to={`/truyen-tranh/${manga._id}`} className='group block'>
       <div className='relative rounded-xl overflow-hidden'>
         <img
           src={manga.coverImageUrl}
           alt={manga.title}
           loading='lazy'
           decoding='async'
-          className='w-full aspect-[3/4] object-cover'
+          className='w-full aspect-3/4 object-cover transition-transform duration-300 group-hover:scale-110'
         />
 
         <span className='absolute top-2 left-2 bg-indigo-600 text-white text-xs px-2 py-0.5 rounded'>
@@ -50,9 +51,9 @@ export default function MangaCard({ manga }) {
         </span>
       </div>
 
-      <h5 className='mt-2 text-sm font-medium text-white line-clamp-2 hover:text-indigo-400 transition'>
+      <h5 className='mt-2 text-sm font-medium text-white line-clamp-2 group-hover:text-indigo-400 transition'>
         {manga.title}
       </h5>
-    </div>
+    </Link>
   )
 }

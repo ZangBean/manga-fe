@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchMangaList } from '@/stores/manga/manga.thunk'
 import {
@@ -19,12 +19,9 @@ export default function HomePage() {
   const mangaList = useSelector(selectMangaList)
   const status = useSelector(selectMangaStatus)
 
-  const effectRan = useRef(false)
-
   useEffect(() => {
-    if (!effectRan.current && status === 'idle') {
+    if (status === 'idle') {
       dispatch(fetchMangaList())
-      effectRan.current = true
     }
   }, [dispatch, status])
 
