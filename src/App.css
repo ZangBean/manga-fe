@@ -249,3 +249,137 @@ input:checked + .slider .spaceship {
 .animate-twinkle-slow {
   animation: twinkle-slow infinite ease-in-out;
 }
+
+.hot-badge {
+  background: linear-gradient(
+    90deg,
+    hsl(0, 90%, 55%),
+    hsl(15, 100%, 60%),
+    hsl(30, 100%, 65%),
+    hsl(45, 95%, 65%),
+    hsl(180, 80%, 55%),
+    hsl(200, 90%, 60%),
+    hsl(220, 85%, 55%),
+    hsl(180, 80%, 55%),
+    hsl(0, 90%, 55%)
+  );
+  background-size: 400% 400%;
+  clip-path: polygon(50% 0%, 90% 25%, 90% 75%, 50% 100%, 10% 75%, 10% 25%);
+  animation: gradientShift 8s ease infinite,
+    pulseHotBold 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(100, 200, 255, 0.8),
+    inset 0 0 12px rgba(255, 255, 255, 0.4);
+  padding: 0.5rem 1.3rem;
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 150, 255, 0.7);
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulseHotBold {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(100, 200, 255, 0.8),
+      inset 0 0 12px rgba(255, 255, 255, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(50, 180, 255, 1),
+      0 0 60px rgba(100, 220, 255, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.6);
+    transform: scale(1.08);
+  }
+}
+
+.hero-title {
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.7);
+  -webkit-text-stroke: 1px #000;
+}
+.hero-desc {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  overflow: hidden;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-gradient-slide {
+  background: linear-gradient(90deg, #e53637, #ff0000);
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-gradient-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #6a67ce, #79dae8);
+  transform: translateX(-100%);
+  transition: transform 0.45s ease;
+  z-index: -1;
+}
+
+.btn-gradient-slide span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-gradient-slide:hover::before {
+  transform: translateX(0);
+}
+
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-item {
+  opacity: 0;
+  animation: slideDownFade 0.8s ease-out forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.1s;
+}
+.delay-2 {
+  animation-delay: 0.3s;
+}
+.delay-3 {
+  animation-delay: 0.5s;
+}
+.delay-4 {
+  animation-delay: 0.7s;
+}
+
+.hero-content-inactive > * {
+  opacity: 0 !important;
+}

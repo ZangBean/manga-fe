@@ -5,5 +5,8 @@ const api = axios.create({
   withCredentials: true,
 })
 
+export const getTopViews = (limit = 10) =>
+  api.get('/mangas/top-views', { params: { limit } })
+
 export const getAllMangas = () => api.get('/mangas')
 export const getMangaById = (id) => api.get(`/mangas/${id}`)
