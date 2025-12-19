@@ -1,9 +1,17 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchMangaList } from '@/stores/manga/manga.thunk'
+import {
+  fetchMangaList,
+  fetchTopMangas,
+  fetchLatestMangas,
+} from '@/stores/manga/manga.thunk'
 import {
   selectMangaList,
   selectMangaStatus,
+  selectTopMangas,
+  selectTopStatus,
+  selectLatestMangas,
+  selectLatestStatus,
 } from '@/stores/manga/manga.selector'
 
 import MangaSlider from '@/components/manga/MangaSlider'
@@ -17,24 +25,30 @@ import ErrorPage from '@/pages/errors/ErrorPage'
 export default function HomePage() {
   const dispatch = useDispatch()
   const mangaList = useSelector(selectMangaList)
-  const status = useSelector(selectMangaStatus)
+  const listStatus = useSelector(selectMangaStatus)
+
+  const topMangas = useSelector(selectTopMangas)
+  const topStatus = useSelector(selectTopStatus)
+
+  const latestMangas = useSelector(selectLatestMangas)
+  const latestStatus = useSelector(selectLatestStatus)
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchMangaList())
-    }
-  }, [dispatch, status])
+    dispatch(fetchMangaList())
+    dispatch(fetchTopMangas())
+    dispatch(fetchLatestMangas())
+  }, [dispatch])
 
-  if (status === 'loading') return <LoadingGrid />
-  if (status === 'failed') return <ErrorPage />
+  if (listStatus === 'loading') return <LoadingGrid />
+  if (listStatus === 'failed') return <ErrorPage />
 
   return (
     <main className='container mx-auto px-4 py-10'>
-      <MangaSlider mangaList={mangaList} />
+      <MangaSlider mangaList={topMangas} />
 
       <div className='grid grid-cols-12 gap-6 mt-10'>
         <div className='col-span-12 lg:col-span-8'>
-          <MangaList mangaList={mangaList} />
+          <MangaList mangaList={latestMangas} />
         </div>
         <div className='col-span-12 lg:col-span-4'>
           <MangaTop />

@@ -13,7 +13,7 @@ export default function MangaList({ title = 'Truyện mới', mangaList = [] }) 
           {mangaList.map((manga) => (
             <div
               key={manga._id}
-              className='transition-transform hover:-translate-y-1'
+              className='transition-transform hover:-translate-y-1 hover:z-30'
             >
               <MangaCard manga={manga} />
             </div>
