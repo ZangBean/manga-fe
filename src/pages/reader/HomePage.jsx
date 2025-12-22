@@ -1,11 +1,17 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchMangaList, fetchTopMangas } from '@/stores/manga/manga.thunk'
+import {
+  fetchMangaList,
+  fetchTopMangas,
+  fetchLatestMangas,
+} from '@/stores/manga/manga.thunk'
 import {
   selectMangaList,
   selectMangaStatus,
   selectTopMangas,
   selectTopStatus,
+  selectLatestMangas,
+  selectLatestStatus,
 } from '@/stores/manga/manga.selector'
 
 import MangaSlider from '@/components/manga/MangaSlider'
@@ -24,14 +30,14 @@ export default function HomePage() {
   const topMangas = useSelector(selectTopMangas)
   const topStatus = useSelector(selectTopStatus)
 
+  const latestMangas = useSelector(selectLatestMangas)
+  const latestStatus = useSelector(selectLatestStatus)
+
   useEffect(() => {
-    if (listStatus === 'idle') {
-      dispatch(fetchMangaList())
-    }
-    if (topStatus === 'idle') {
-      dispatch(fetchTopMangas())
-    }
-  }, [dispatch, listStatus, topStatus])
+    dispatch(fetchMangaList())
+    dispatch(fetchTopMangas())
+    dispatch(fetchLatestMangas())
+  }, [dispatch])
 
   if (listStatus === 'loading') return <LoadingGrid />
   if (listStatus === 'failed') return <ErrorPage />
@@ -42,7 +48,7 @@ export default function HomePage() {
 
       <div className='grid grid-cols-12 gap-6 mt-10'>
         <div className='col-span-12 lg:col-span-8'>
-          <MangaList mangaList={mangaList} />
+          <MangaList mangaList={latestMangas} />
         </div>
         <div className='col-span-12 lg:col-span-4'>
           <MangaTop />
