@@ -337,7 +337,7 @@ input:checked + .slider .spaceship {
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, #6a67ce, #79dae8);
-  transform: translateX(-100%);
+  transform: translateX(-101%);
   transition: transform 0.45s ease;
   z-index: -1;
 }

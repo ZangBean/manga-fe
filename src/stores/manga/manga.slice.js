@@ -1,13 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchMangaList, fetchMangaById, fetchTopMangas } from './manga.thunk'
+import {
+  fetchTopMangas,
+  fetchLatestMangas,
+  fetchMangasPaginated,
+  fetchMangaById,
+  fetchMangaList,
+  fetchRandomMangas,
+} from './manga.thunk'
 
 const initialState = {
-  list: [],
-  selected: null,
+  // Trang chủ: manga mới cập nhật
+  latestMangas: [],
+  latestStatus: 'idle',
+  // Trang tất cả: phân trang
+  paginatedMangas: [],
+  pagination: null,
+  paginatedStatus: 'idle',
+  // Top views
   topMangas: [],
   topStatus: 'idle',
-  status: 'idle',
+  // Chi tiết manga
+  selected: null,
   selectedStatus: 'idle',
+  //Random mangas
+  randomMangas: [],
+  randomStatus: 'idle',
+  // List cũ
+  list: [],
+  status: 'idle',
   error: null,
 }
 
@@ -38,6 +58,30 @@ const mangaSlice = createSlice({
     }
 
     builder
+      // Latest mangas (trang chủ)
+      .addCase(fetchLatestMangas.pending, (state) => {
+        handlePending(state, 'latestStatus')
+      })
+      .addCase(fetchLatestMangas.fulfilled, (state, action) => {
+        handleFulfilled(state, action, 'latestMangas', 'latestStatus')
+      })
+      .addCase(fetchLatestMangas.rejected, (state, action) => {
+        handleRejected(state, action, 'latestStatus')
+      })
+
+      // Paginated mangas
+      .addCase(fetchMangasPaginated.pending, (state) => {
+        handlePending(state, 'paginatedStatus')
+      })
+      .addCase(fetchMangasPaginated.fulfilled, (state, action) => {
+        state.paginatedStatus = 'succeeded'
+        state.paginatedMangas = action.payload.mangas
+        state.pagination = action.payload.pagination
+      })
+      .addCase(fetchMangasPaginated.rejected, (state, action) => {
+        handleRejected(state, action, 'paginatedStatus')
+      })
+
       // Fetch top mangas
       .addCase(fetchTopMangas.pending, (state) => {
         handlePending(state, 'topStatus')
@@ -70,6 +114,18 @@ const mangaSlice = createSlice({
       )
       .addCase(fetchMangaById.rejected, (state, action) =>
         handleRejected(state, action, 'selectedStatus')
+      )
+
+      // Random mangas
+      .addCase(fetchRandomMangas.pending, (state) =>
+        handlePending(state, 'randomStatus')
+      )
+      .addCase(fetchRandomMangas.fulfilled, (state, action) => {
+        state.randomStatus = 'succeeded'
+        state.randomMangas = action.payload
+      })
+      .addCase(fetchRandomMangas.rejected, (state, action) =>
+        handleRejected(state, action, 'randomStatus')
       )
   },
 })
