@@ -31,6 +31,12 @@ export const selectMangaError = (state) => selectMangaState(state).error
 export const selectTopMangas = (state) => selectMangaState(state).topMangas
 export const selectTopStatus = (state) => selectMangaState(state).topStatus
 
+// Random mangas
+export const selectRandomMangas = (state) =>
+  selectMangaState(state).randomMangas
+export const selectRandomStatus = (state) =>
+  selectMangaState(state).randomStatus
+
 // export const selectMangaById = createSelector(
 //   [selectMangaList, (_, id) => id],
 //   (list, id) => list.find((manga) => manga.id === id)

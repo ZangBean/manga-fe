@@ -17,3 +17,6 @@ export const getMangasPaginated = (page = 1, limit = 20) =>
   api.get('/mangas/paginated', { params: { page, limit } })
 
 export const getMangaById = (id) => api.get(`/mangas/${id}`)
+
+export const getRandomMangas = (limit = 5) =>
+  api.get('/mangas/random', { params: { limit } })

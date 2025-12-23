@@ -5,6 +5,7 @@ import {
   fetchMangasPaginated,
   fetchMangaById,
   fetchMangaList,
+  fetchRandomMangas,
 } from './manga.thunk'
 
 const initialState = {
@@ -21,6 +22,9 @@ const initialState = {
   // Chi tiết manga
   selected: null,
   selectedStatus: 'idle',
+  //Random mangas
+  randomMangas: [],
+  randomStatus: 'idle',
   // List cũ
   list: [],
   status: 'idle',
@@ -110,6 +114,18 @@ const mangaSlice = createSlice({
       )
       .addCase(fetchMangaById.rejected, (state, action) =>
         handleRejected(state, action, 'selectedStatus')
+      )
+
+      // Random mangas
+      .addCase(fetchRandomMangas.pending, (state) =>
+        handlePending(state, 'randomStatus')
+      )
+      .addCase(fetchRandomMangas.fulfilled, (state, action) => {
+        state.randomStatus = 'succeeded'
+        state.randomMangas = action.payload
+      })
+      .addCase(fetchRandomMangas.rejected, (state, action) =>
+        handleRejected(state, action, 'randomStatus')
       )
   },
 })

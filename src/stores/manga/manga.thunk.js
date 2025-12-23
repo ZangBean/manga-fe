@@ -4,6 +4,7 @@ import {
   getMangaById,
   getTopViews,
   getLatestMangas,
+  getRandomMangas,
 } from '@/services/apiManga'
 import { MANGA_LIMITS } from '@/constants/limits'
 
@@ -50,8 +51,6 @@ export const fetchLatestMangas = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await getLatestMangas(MANGA_LIMITS.LATEST_HOME_LIMIT)
-      console.log('data: ', res.data)
-
       return res.data
     } catch (err) {
       return rejectWithValue(handleApiError(err))
@@ -67,6 +66,17 @@ export const fetchMangasPaginated = createAsyncThunk(
   ) => {
     try {
       const res = await getMangasPaginated(page, limit)
+      return res.data
+    } catch (err) {
+      return rejectWithValue(handleApiError(err))
+    }
+  }
+)
+export const fetchRandomMangas = createAsyncThunk(
+  'manga/fetchRandomMangas',
+  async (limit = 5, { rejectWithValue }) => {
+    try {
+      const res = await getRandomMangas(limit)
       return res.data
     } catch (err) {
       return rejectWithValue(handleApiError(err))
