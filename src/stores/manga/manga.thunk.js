@@ -5,7 +5,7 @@ import {
   getTopViews,
   getLatestMangas,
   getRandomMangas,
-} from '@/services/apiManga'
+} from '@/services/manga.service'
 import { MANGA_LIMITS } from '@/constants/limits'
 
 const handleApiError = (err) => err.response?.data || err.message

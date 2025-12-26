@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, memo } from 'react'
 import { Link } from 'react-router-dom'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { MdMenuBook } from 'react-icons/md'
-import HotBadge from '@/components/layout/HotBadge'
+import HotBadge from '@/components/common/HotBadge'
 
 const Slide = memo(function Slide({ topMangas, isHero, isActive }) {
   return (
