@@ -1,6 +1,6 @@
 export default function ErrorPage() {
   return (
-    <div className='min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-100'>
+    <div className='min-h-screen flex flex-col items-center justify-center bg-linear-to-br from-indigo-50 to-purple-100'>
       <div className='text-center'>
         <div className='text-6xl mb-4'>😵</div>
         <h2 className='text-2xl font-bold text-gray-800 mb-2'>Lỗi tải manga</h2>

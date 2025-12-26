@@ -19,7 +19,11 @@ const SPIN_THRESHOLD = 3
 
 const MESSAGES = [
   { text: 'Làm gì khó tính vậy má', icon: <FaRegFaceAngry />, img: memeDog },
-  { text: 'Quay ít thôi', icon: <FaRegFaceGrimace />, img: memeCat },
+  {
+    text: 'Sự khó tính tạo ra kẻ khó chiều',
+    icon: <FaRegFaceGrimace />,
+    img: memeCat,
+  },
   {
     text: 'Bộ nào cũng hay, chọn đại đê',
     icon: <FaRegFaceKissWinkHeart />,

@@ -9,14 +9,18 @@ import { store } from '@/stores/store'
 import RootRouter from '@/routes/RootRoutes'
 import ScrollToTop from '@/components/common/ScrollToTop'
 
+import { AuthProvider } from '@/contexts/AuthContext'
+
 function App() {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <ScrollToTop />
-          <RootRouter />
-        </BrowserRouter>
+        <AuthProvider>
+          <BrowserRouter>
+            <ScrollToTop />
+            <RootRouter />
+          </BrowserRouter>
+        </AuthProvider>
       </QueryClientProvider>
     </Provider>
   )

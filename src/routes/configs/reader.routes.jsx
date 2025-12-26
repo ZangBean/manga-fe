@@ -2,6 +2,7 @@ import { Route } from 'react-router-dom'
 import { lazy } from 'react'
 import { ROUTER_PATH } from '@/constants/routers'
 import ReaderLayout from '@/layouts/reader/ReaderLayout'
+import GuestRoute from '@/routes/guards/GuestRoute'
 
 const HomePage = lazy(() => import('@/pages/reader/HomePage'))
 const DetailPage = lazy(() => import('@/pages/reader/DetailPage'))
@@ -9,6 +10,7 @@ const ImagePage = lazy(() => import('@/pages/reader/ImagePage'))
 const GenrePage = lazy(() => import('@/pages/reader/GenrePage'))
 const NewsPage = lazy(() => import('@/pages/reader/NewsPage'))
 const ContactPage = lazy(() => import('@/pages/reader/ContactPage'))
+const LoginPage = lazy(() => import('@/pages/reader/LoginPage'))
 
 const ReaderRoutes = (
   <Route element={<ReaderLayout />}>
@@ -18,6 +20,14 @@ const ReaderRoutes = (
     <Route path={ROUTER_PATH.GENRE_PAGE.PATH} element={<GenrePage />} />
     <Route path={ROUTER_PATH.NEWS_PAGE.PATH} element={<NewsPage />} />
     <Route path={ROUTER_PATH.CONTACT_PAGE.PATH} element={<ContactPage />} />
+    <Route
+      path={ROUTER_PATH.LOGIN_PAGE.PATH}
+      element={
+        <GuestRoute>
+          <LoginPage />
+        </GuestRoute>
+      }
+    />
   </Route>
 )
 

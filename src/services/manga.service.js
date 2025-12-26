@@ -1,9 +1,4 @@
-import axios from 'axios'
-
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-  withCredentials: true,
-})
+import api from './api'
 
 export const getTopViews = (limit = 10) =>
   api.get('/mangas/top-views', { params: { limit } })
