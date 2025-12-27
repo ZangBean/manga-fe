@@ -16,11 +16,7 @@ export default function Footer() {
         <div className='max-w-6xl mx-auto pt-12 pb-8'>
           <div className='text-center mb-12'>
             <a href='/'>
-              <img
-                src={logo}
-                alt='Logo'
-                className='max-h-[56px] !mx-auto block'
-              />
+              <img src={logo} alt='Logo' className='max-h-14 mx-auto! block' />
             </a>
             <p className='text-sm max-w-2xl mx-auto leading-relaxed mt-6 text-gray-300'>
               Đọc truyện tranh online miễn phí – Manga, Manhwa, Manhua bản dịch

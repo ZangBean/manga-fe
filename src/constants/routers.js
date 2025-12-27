@@ -14,6 +14,18 @@ const PRIVATE_ROUTER_PATH = {
     KEY: 'UPLOADER_DASHBOARD_PAGE',
     PATH: '/uploader/dashboard',
   },
+  UPLOADER_SERIES_LIST: {
+    KEY: 'UPLOADER_SERIES_LIST',
+    PATH: '/uploader/series',
+  },
+  UPLOADER_CHAPTER_UPLOAD: {
+    KEY: 'UPLOADER_CHAPTER_UPLOAD',
+    PATH: '/uploader/upload-chapter',
+  },
+  UPLOADER_ANALYTICS: {
+    KEY: 'UPLOADER_ANALYTICS',
+    PATH: '/uploader/analytics',
+  },
 }
 
 const ADMIN_ROUTER_PATH = {
