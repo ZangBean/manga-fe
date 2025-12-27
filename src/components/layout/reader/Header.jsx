@@ -17,11 +17,11 @@ export default function Header() {
   return (
     <header className='bg-[#070720] sticky top-0 z-50 shadow-md'>
       <div className='container mx-auto px-4'>
-        <div className='flex items-center justify-between h-[65px]'>
+        <div className='flex items-center justify-between h-16.25'>
           {/* Logo */}
           <div className='flex-1'>
             <Link to='/'>
-              <img src={logo} alt='Logo' className='max-h-[56px]' />
+              <img src={logo} alt='Logo' className='max-h-14' />
             </Link>
           </div>
 
@@ -29,7 +29,7 @@ export default function Header() {
           <div className='flex-2'>
             <ul className='flex justify-center'>
               {MENUS.map((item) => (
-                <li key={item.to} className='w-[120px] h-[65px]'>
+                <li key={item.to} className='w-30 h-16.25'>
                   <NavLink
                     to={item.to}
                     className={({ isActive }) =>
@@ -49,7 +49,7 @@ export default function Header() {
             <div className='relative'>
               <input
                 placeholder='Tìm kiếm truyện...'
-                className='w-[250px] h-[40px] pl-4 pr-10 rounded-full'
+                className='w-62.5 h-10 pl-4 pr-10 rounded-full'
               />
               <FaSearch className='absolute right-4 top-1/2 -translate-y-1/2 text-gray-400' />
             </div>

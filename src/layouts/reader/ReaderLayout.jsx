@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
-import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer'
+import Header from '@/components/layout/reader/header'
+import Footer from '@/components/layout/reader/footer'
 
 export default function ReaderLayout() {
   return (
